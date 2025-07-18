@@ -1,0 +1,27 @@
+.pokedex-container {
+  display: grid;
+  grid-template-columns: 3fr 2fr; /* левая панель займёт 3 части, правая — 2 */
+  gap: var(--gap-main, 10px);
+  background-color: var(--color-primary, #f40552);
+  margin: 0 auto;
+  max-width: var(--container-max-width, 1200px);
+  border-radius: var(--radius-main, 12px);
+  min-height: 500px;
+  padding: var(--container-padding, 16px);
+}
+.pokelist-container {
+  overflow-y: scroll;
+}
+.pokelist-container,
+.pokesearchresult-container {
+  height: 475px;
+  background-color: var(--color-secondary, rgba(252, 126, 47, 0.6));
+  border-radius: 10px;
+  padding: var(--gap-main, 10px);
+}
+
+.pokesearchresult-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

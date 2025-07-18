@@ -1,0 +1,4 @@
+.pokelist {
+  display: flex;
+  flex-wrap: wrap;
+}
