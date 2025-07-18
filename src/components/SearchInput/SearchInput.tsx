@@ -5,12 +5,12 @@ import './SearchInput.css';
 const SearchInput = ({ onInputChange }: SearchInputProps) => {
   const [inputValue, setInputValue] = useState('');
 
-useEffect(() => {
-  const saved = localStorage.getItem('pokemonSearch');
-  if (saved) {
-    setInputValue(saved);
-  }
-}, []);
+  useEffect(() => {
+    const saved = localStorage.getItem('pokemonSearch');
+    if (saved) {
+      setInputValue(saved);
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
