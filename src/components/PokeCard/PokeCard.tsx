@@ -1,12 +1,14 @@
-import React from 'react'
-import './PokeCard.css'
+import './PokeCard.css';
 
-export default function PokeCard(props: any) {
+import type { PokemonCardProps } from '../../types/PokemonSchema';
+
+const PokeCard = ({ spriteUrl, name, onClick }: PokemonCardProps) => {
   return (
-          <div className='pokemon-card'>
-        {/* image */}
-        <p>{props.name}</p>
-      </div>
-  )
-}
+    <div className="pokemon-card" onClick={onClick}>
+      <img className="pokemon-image" src={spriteUrl} alt={name} />
+      <p>{name}</p>
+    </div>
+  );
+};
 
+export default PokeCard;

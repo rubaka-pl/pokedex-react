@@ -1,6 +1,6 @@
 .pokedex-container {
   display: grid;
-  grid-template-columns: 3fr 2fr; /* левая панель займёт 3 части, правая — 2 */
+  grid-template-columns: 3fr 2fr;
   gap: var(--gap-main, 10px);
   background-color: var(--color-primary, #f40552);
   margin: 0 auto;
@@ -8,7 +8,31 @@
   border-radius: var(--radius-main, 12px);
   min-height: 500px;
   padding: var(--container-padding, 16px);
+
+  scrollbar-width: thin;
+  scrollbar-color: #f40552 #fcd307;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  text-shadow: 0 0 5px #f40552;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    background: linear-gradient(180deg, #fcd307, #f40552);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #f40552, #fcd307);
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 8px #f40552;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #fcd307, #f40552);
+  }
 }
+
 .pokelist-container {
   overflow-y: scroll;
 }
@@ -24,4 +48,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .pokedex-container {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .pokelist-container,
+  .pokesearchresult-container {
+    height: auto;
+    max-height: 300px;
+    margin-bottom: 16px;
+  }
+
+  .pokelist {
+    justify-content: center;
+  }
 }

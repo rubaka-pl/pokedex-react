@@ -1,17 +1,21 @@
-import PokeCard from '../PokeCard/PokeCard'
-import './Pokelist.css'
+import PokeCard from '../PokeCard/PokeCard';
+import './Pokelist.css';
+import type { PokelistProps } from '../../types/PokemonSchema';
 
-import React from 'react'
-
-export default function Pokelist() {
+export default function Pokelist({
+  searchedPokemon,
+  handleclick,
+}: PokelistProps) {
   return (
     <div className="pokelist">
-        <PokeCard name="pidra"/>
-        <PokeCard name="pidra"/>
-        <PokeCard name="pidra"/>
-        <PokeCard name="pidra"/>       
-        <PokeCard name="pidra"/>
-
+      {searchedPokemon.map(({ id, name, sprites }) => (
+        <PokeCard
+          key={id}
+          name={name || 'Unknown'}
+          spriteUrl={sprites?.normal}
+          onClick={() => handleclick(name!)} // 👈
+        />
+      ))}
     </div>
-  )
+  );
 }

@@ -1,15 +1,34 @@
-import './SearchInput.css'
+import { useEffect, useState } from 'react';
+import type { SearchInputProps } from '../../types/PokemonSchema';
+import './SearchInput.css';
 
-import React from 'react'
+const SearchInput = ({ onInputChange }: SearchInputProps) => {
+  const [inputValue, setInputValue] = useState('');
 
-const SearchInput = () => {
+useEffect(() => {
+  const saved = localStorage.getItem('pokemonSearch');
+  if (saved) {
+    setInputValue(saved);
+  }
+}, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    localStorage.setItem('pokemonSearch', value);
+    onInputChange(value);
+  };
+
   return (
-    <input 
-    id='search-input'
-    type="search"
-    className='search'
-    placeholder='Search' />
-  )
-}
+    <input
+      onChange={handleChange}
+      id="search-input"
+      value={inputValue}
+      type="search"
+      className="search"
+      placeholder="Search"
+    />
+  );
+};
 
-export default SearchInput
+export default SearchInput;
